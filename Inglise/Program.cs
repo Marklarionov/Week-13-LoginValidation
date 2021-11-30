@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Inglise
 {
@@ -15,15 +15,27 @@ namespace Inglise
             string password = "pass1234";
 
             string userName, userPassword;
-            Console.WriteLine("Enter your login: ");
-            userName = Console.ReadLine();
-            Console.WriteLine("Enter your password: ");
-            userPassword = Console.ReadLine();
 
-            if (login == userName && password == userPassword)
-                Console.WriteLine("Welcome!");
-            else
-                Console.WriteLine("Oops. smth went wrong.");
+            int tries = 0;
+            while (tries != 3)
+            {
+                Console.WriteLine("Enter your login: ");
+                userName = Console.ReadLine();
+                Console.WriteLine("Enter your password: ");
+                userPassword = Console.ReadLine();
+
+                if (login != userName || password != userPassword)
+                {
+                    Console.WriteLine("Oops. smth went wrong.");
+                    tries++; //tries = tries + 1
+                    Console.WriteLine($"Login failed. Attemps left {tries}");
+                }
+                else
+                {
+                    Console.WriteLine("Welcome!");
+                    break;
+                }
+            }
         }
     }
 }
